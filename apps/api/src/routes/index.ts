@@ -1,14 +1,13 @@
-import { Hono } from 'hono';
+import type { AppAPI } from '../lib/types';
 
-const index = new Hono();
+import createRouter from '../lib/create-router';
+import healthRoute from './health.route';
 
-const app = new Hono();
-
-function registerRoutes(app: Hono) {
-  return app.route('/', index);
+export function registerRoutes(app: AppAPI) {
+  return app.route('/', healthRoute);
 }
 
-export const router = registerRoutes(app.basePath('/api'));
+export const router = registerRoutes(createRouter());
 
 // eslint-disable-next-line ts/no-redeclare
 export type router = typeof router;
