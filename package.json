@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"bun run --cwd apps/api dev\" \"bun run --cwd apps/web dev\"",
+    "dev": "concurrently \"bun run --cwd apps/api dev\" \"bun run --cwd packages/api-client dev\" \"bun run --cwd apps/web dev\" ",
     "build": "bun run --cwd apps/web build",
     "lint": "concurrently \"bun run --cwd apps/api lint\" \"bun run --cwd apps/web lint\""
   },

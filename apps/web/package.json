@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@honora/api": "workspace:*",
+    "@honora/api-client": "workspace:*",
+    "@honora/eslint-config": "workspace:*",
     "@tanstack/react-query": "^5.69.0",
     "@tanstack/react-router": "^1.114.25",
     "react": "^19.0.0",

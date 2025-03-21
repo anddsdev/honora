@@ -1,6 +1,9 @@
 {
   "name": "@honora/api",
   "type": "module",
+  "exports": {
+    "./routes": "./src/routes/index.ts"
+  },
   "scripts": {
     "dev": "bun run --hot src/index.ts",
     "lint": "eslint ."

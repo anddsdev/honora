@@ -1,0 +1,22 @@
+{
+  "name": "@honora/api-client",
+  "type": "module",
+  "private": true,
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rm -rf dist && tsc",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@honora/eslint-config": "workspace:*",
+    "@honora/api": "workspace:*",
+    "hono": "^4.7.5"
+  }
+}

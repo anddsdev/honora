@@ -25,6 +25,9 @@
       "name": "web",
       "version": "0.0.0",
       "dependencies": {
+        "@honora/api": "workspace:*",
+        "@honora/api-client": "workspace:*",
+        "@honora/eslint-config": "workspace:*",
         "@tanstack/react-query": "^5.69.0",
         "@tanstack/react-router": "^1.114.25",
         "react": "^19.0.0",
@@ -49,6 +52,20 @@
         "typescript-eslint": "^8.24.1",
         "vite": "^6.2.0",
         "vite-tsconfig-paths": "^5.1.4",
+      },
+    },
+    "packages/api-client": {
+      "name": "@honora/api-client",
+      "dependencies": {
+        "@honora/api": "workspace:*",
+        "@honora/eslint-config": "workspace:*",
+        "hono": "^4.7.5",
+      },
+      "devDependencies": {
+        "@types/bun": "latest",
+      },
+      "peerDependencies": {
+        "typescript": "^5",
       },
     },
     "packages/eslint-config": {
@@ -219,6 +236,8 @@
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.2.7", "", { "dependencies": { "@eslint/core": "^0.12.0", "levn": "^0.4.1" } }, "sha512-JubJ5B2pJ4k4yGxaNLdbjrnk9d/iDz6/q8wOilpIowd6PJPgaxCuHBnBszq7Ce2TyMrywm5r4PnKm6V3iiZF+g=="],
 
     "@honora/api": ["@honora/api@workspace:apps/api"],
+
+    "@honora/api-client": ["@honora/api-client@workspace:packages/api-client"],
 
     "@honora/eslint-config": ["@honora/eslint-config@workspace:packages/eslint-config"],
 
@@ -664,7 +683,7 @@
 
     "hasown": ["hasown@2.0.2", "", { "dependencies": { "function-bind": "^1.1.2" } }, "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ=="],
 
-    "hono": ["hono@4.7.4", "", {}, "sha512-Pst8FuGqz3L7tFF+u9Pu70eI0xa5S3LPUmrNd5Jm8nTHze9FxLTK9Kaj5g/k4UcwuJSXTP65SyHOPLrffpcAJg=="],
+    "hono": ["hono@4.7.5", "", {}, "sha512-fDOK5W2C1vZACsgLONigdZTRZxuBqFtcKh7bUQ5cVSbwI2RWjloJDcgFOVzbQrlI6pCmhlTsVYZ7zpLj4m4qMQ=="],
 
     "hosted-git-info": ["hosted-git-info@7.0.2", "", { "dependencies": { "lru-cache": "^10.0.1" } }, "sha512-puUZAUKT5m8Zzvs72XWy3HtvVbTWljRE66cP60bxJzAqf2DgICo7lYTY2IHUmLnNpjYvw5bvmoHvPc0QO2a62w=="],
 
