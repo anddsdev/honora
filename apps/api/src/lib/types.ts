@@ -1,6 +1,7 @@
 import type { Env, Hono } from 'hono';
 
 import type { BASE_PATH } from './constants';
+import { auth } from './auth';
 
 export type Fetcher = {
   fetch: (request: Request | URL | string) => Promise<Response>;
@@ -8,8 +9,8 @@ export type Fetcher = {
 
 export type Context = {
   Variables: {
-    user: undefined;
-    session: undefined;
+    user: typeof auth.$Infer.Session.user | null;
+    session: typeof auth.$Infer.Session.session | null;
   };
   Bindings: {
     ASSETS: Fetcher;

@@ -1,4 +1,4 @@
-import createRouter from '../lib/create-router';
+import createRouter from '@/api/lib/create-router';
 
 const router = createRouter();
 

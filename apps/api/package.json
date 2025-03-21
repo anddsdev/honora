@@ -6,15 +6,21 @@
   },
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^6.5.0",
     "better-auth": "^1.2.4",
     "hono": "^4.7.4"
   },
   "devDependencies": {
     "@honora/eslint-config": "workspace:*",
     "@types/bun": "latest",
-    "eslint": "^9.22.0"
+    "eslint": "^9.22.0",
+    "prisma": "^6.5.0"
   }
 }

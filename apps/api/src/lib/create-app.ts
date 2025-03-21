@@ -2,6 +2,7 @@ import { serveStatic } from 'hono/bun';
 
 import type { AppAPI } from './types';
 
+import { auth } from './auth';
 import { BASE_PATH } from './constants';
 import createRouter from './create-router';
 
@@ -13,10 +14,13 @@ export default function createApp() {
         return next();
       }
       const { origin } = new URL(c.req.raw.url);
-
       return c.env.ASSETS.fetch(new URL('/index.html', origin));
     })
     .basePath(BASE_PATH) as AppAPI;
+
+  app.on(['POST', 'GET'], '/auth/*', (c) => {
+    return auth.handler(c.req.raw);
+  });
 
   return app;
 }
