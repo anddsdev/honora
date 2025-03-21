@@ -1,4 +1,8 @@
-# honora-starter
+# Honora
+
+Honora is a starter template for [Bun](https://bun.sh) with [Hono](https://github.com/honojs/hono) and [React](https://reactjs.org/) for a full stack web app.
+
+## Getting Started
 
 To install dependencies:
 
