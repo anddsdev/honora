@@ -7,7 +7,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   build: {
     outDir: '../api/public',
-    emptyOutDir: true,
+    // emptyOutDir: true,
   },
   plugins: [
     tsconfigPaths(),
