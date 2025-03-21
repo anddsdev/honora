@@ -1,0 +1,16 @@
+{
+  "name": "@honora/api",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "hono": "^4.7.4"
+  },
+  "devDependencies": {
+    "@honora/eslint-config": "workspace:*",
+    "@types/bun": "latest",
+    "eslint": "^9.22.0"
+  }
+}

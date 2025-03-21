@@ -1,0 +1,18 @@
+{
+  "name": "@honora/eslint-config",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./eslint.config.js",
+    "./create-config": "./create-config.js"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.10.1",
+    "@types/bun": "latest",
+    "eslint": "^9.22.0",
+    "eslint-plugin-format": "^1.0.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

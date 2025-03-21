@@ -1,0 +1,18 @@
+{
+  "name": "honora",
+  "scripts": {
+    "dev": "concurrently \"bun run --cwd apps/api dev\" \"bun run --cwd apps/web dev\"",
+    "build": "bun run --cwd apps/web build",
+    "lint": "concurrently \"bun run --cwd apps/api lint\" \"bun run --cwd apps/web lint\""
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}
