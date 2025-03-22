@@ -1,5 +1,6 @@
 import type { Env, Hono } from 'hono';
 
+import type { auth } from './auth';
 import type { BASE_PATH } from './constans';
 
 export type Fetcher = {
@@ -8,8 +9,8 @@ export type Fetcher = {
 
 export type AppEnv = {
   Variables: {
-    user: undefined;
-    session: undefined;
+    user: typeof auth.$Infer.Session.user | null;
+    session: typeof auth.$Infer.Session.session | null;
   };
   Bindings: {
     ASSETS: Fetcher;
@@ -18,3 +19,15 @@ export type AppEnv = {
 
 // eslint-disable-next-line ts/no-empty-object-type
 export type AppApi = Hono<AppEnv, {}, typeof BASE_PATH>;
+
+export type ErrorResponse = {
+  success: false;
+  error: string;
+  isJsonError?: boolean;
+};
+
+export type SuccessResponse<T = void> = {
+  success: true;
+  message: string;
+  // eslint-disable-next-line ts/no-empty-object-type
+} & (T extends void ? {} : { data: T });
