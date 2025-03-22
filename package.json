@@ -7,14 +7,12 @@
     "build": "bun run --cwd apps/web build",
     "lint": "concurrently \"bun run --cwd apps/api lint\" \"bun run --cwd apps/web lint\""
   },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
   "workspaces": [
-    "packages/*",
-    "apps/*"
-  ]
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "concurrently": "^9.1.2"
+  }
 }

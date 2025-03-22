@@ -1,6 +1,5 @@
-import type { Env, Hono } from 'hono';
+import type { Env } from 'hono';
 
-import type { BASE_PATH } from './constants';
 import { auth } from './auth';
 
 export type Fetcher = {
@@ -16,6 +15,3 @@ export type Context = {
     ASSETS: Fetcher;
   };
 } & Env;
-
-// eslint-disable-next-line ts/no-empty-object-type
-export type AppAPI = Hono<Context, {}, typeof BASE_PATH>;

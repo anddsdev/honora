@@ -9,14 +9,15 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/node": "^22.13.11"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
-    "@honora/eslint-config": "workspace:*",
     "@honora/api": "workspace:*",
+    "@honora/eslint-config": "workspace:*",
     "hono": "^4.7.5"
   }
 }

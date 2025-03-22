@@ -2,7 +2,7 @@ import createRouter from '@/api/lib/create-router';
 
 const router = createRouter();
 
-router.get('/', (c) => {
+router.get('/health', (c) => {
   return c.text('Hello World!');
 });
 
