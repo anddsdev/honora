@@ -28,4 +28,16 @@ export const auth = betterAuth({
       },
     },
   },
+  advanced: {
+    cookiePrefix: 'honora',
+    cookies: {
+      session_token: {
+        attributes: {
+          httpOnly: true,
+          sameSite: 'lax',
+          path: '/',
+        },
+      },
+    },
+  },
 });
