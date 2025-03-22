@@ -7,19 +7,27 @@
     "dev": "bun run --hot src/app.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "lint:fix": "npm run lint --fix"
+    "lint:fix": "npm run lint --fix",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@hono/zod-openapi": "^0.19.2",
+    "@prisma/client": "^6.4.1",
+    "better-auth": "^1.2.4",
     "hono": "^4.7.5",
     "stoker": "^1.4.2",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@honora/eslint-config": "workspace:^",
+    "@types/bun": "^1.2.5",
     "@types/node": "^22.13.11",
     "eslint": "^9.22.0",
     "eslint-plugin-format": "^1.0.1",
+    "prisma": "^6.5.0",
     "typescript": "^5.8.2"
   }
 }
