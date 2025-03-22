@@ -68,6 +68,9 @@ importers:
       '@tanstack/react-router':
         specifier: ^1.114.27
         version: 1.114.27(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      better-auth:
+        specifier: ^1.2.4
+        version: 1.2.4(typescript@5.7.3)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -3455,6 +3458,24 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
+  better-auth@1.2.4(typescript@5.7.3):
+    dependencies:
+      '@better-auth/utils': 0.2.3
+      '@better-fetch/fetch': 1.1.17
+      '@noble/ciphers': 0.6.0
+      '@noble/hashes': 1.7.1
+      '@simplewebauthn/browser': 13.1.0
+      '@simplewebauthn/server': 13.1.1
+      better-call: 1.0.5
+      defu: 6.1.4
+      jose: 5.10.0
+      kysely: 0.27.6
+      nanostores: 0.11.4
+      valibot: 1.0.0-beta.15(typescript@5.7.3)
+      zod: 3.24.2
+    transitivePeerDependencies:
+      - typescript
+
   better-auth@1.2.4(typescript@5.8.2):
     dependencies:
       '@better-auth/utils': 0.2.3
@@ -4902,6 +4923,10 @@ snapshots:
       react: 19.0.0
 
   util-deprecate@1.0.2: {}
+
+  valibot@1.0.0-beta.15(typescript@5.7.3):
+    optionalDependencies:
+      typescript: 5.7.3
 
   valibot@1.0.0-beta.15(typescript@5.8.2):
     optionalDependencies:
