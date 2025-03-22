@@ -1,15 +1,13 @@
 {
-  "name": "honora-starter",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
-  "workspaces": [
-    "apps/*"
-  ],
-  "devDependencies": {
-    "@types/bun": "latest"
+  "name": "honora",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Honora is a starter template for building full-stack applications with Hono.",
+  "scripts": {
+    "dev": "pnpm run -r --parallel --aggregate-output dev",
+    "build": "pnpm run -r build",
+    "lint": "pnpm run -r --parallel lint",
+    "deploy": "pnpm build && pnpm run -r deploy"
   },
-  "peerDependencies": {
-    "typescript": "^5"
-  }
+  "packageManager": "pnpm@10.6.5"
 }
