@@ -2,7 +2,8 @@
   "name": "@honora/api",
   "exports": {
     "./routes": "./src/routes/index.ts",
-    "./types": "./src/types/index.ts"
+    "./types": "./src/types/index.ts",
+    "./schemas": "./src/schema/index.ts"
   },
   "scripts": {
     "dev": "bun run --hot src/app.ts",

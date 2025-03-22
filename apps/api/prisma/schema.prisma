@@ -58,8 +58,8 @@ model Account {
   accessToken           String?   @map("access_token")
   refreshToken          String?   @map("refresh_token")
   idToken               String?   @map("id_token")
-  accessTokenExpiresAt  DateTime?  @map("access_token_expires_at")
-  refreshTokenExpiresAt DateTime?  @map("refresh_token_expires_at")
+  accessTokenExpiresAt  DateTime? @map("access_token_expires_at")
+  refreshTokenExpiresAt DateTime? @map("refresh_token_expires_at")
   scope                 String?
   password              String?
   createdAt             DateTime
@@ -78,3 +78,5 @@ model Verification {
 
   @@map("verifications")
 }
+
+
