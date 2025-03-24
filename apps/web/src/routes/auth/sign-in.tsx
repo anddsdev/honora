@@ -1,18 +1,22 @@
 import { signInSchema } from '@honora/api/schemas';
 import { useForm } from '@tanstack/react-form';
 import { createFileRoute, Link, useNavigate, useRouter } from '@tanstack/react-router';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
+import { useState } from 'react';
+
+import { Button } from '@/web/components/ui/button';
+import { Input } from '@/web/components/ui/input';
+import { Label } from '@/web/components/ui/label';
 
 import { FieldInfo } from '../../components/field-info';
 import { signIn } from '../../lib/auth-client';
-import { Label } from '@/web/components/ui/label';
-import { Input } from '@/web/components/ui/input';
-import { Button } from '@/web/components/ui/button';
 
 export const Route = createFileRoute('/auth/sign-in')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
   const navigate = useNavigate();
   const router = useRouter();
 
@@ -31,8 +35,7 @@ function RouteComponent() {
       });
 
       if (response.error && response.error.code === 'INVALID_EMAIL_OR_PASSWORD') {
-        alert('Invalid email or password');
-
+        // TODO: show a message to the user that the email or password is invalid
         formApi.setFieldValue('password', '');
         return;
       }
@@ -47,6 +50,8 @@ function RouteComponent() {
     e.stopPropagation();
     form.handleSubmit(e);
   };
+
+  const toggleVisibility = () => setIsVisible((prevState: boolean) => !prevState);
 
   return (
     <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-background to-background/80 p-8 shadow-xl border border-border/50">
@@ -117,19 +122,29 @@ function RouteComponent() {
             name="password"
             children={(field) => {
               return (
-                <>
+                <div className="relative">
                   <Input
                     id={field.name}
                     name={field.name}
                     value={field.state.value}
-                    type="password"
+                    type={isVisible ? 'text' : 'password'}
                     onBlur={field.handleBlur}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.handleChange(e.target.value)}
                     placeholder="********"
                     className="border-input/50 bg-background/50 backdrop-blur-sm"
                   />
                   <FieldInfo field={field} />
-                </>
+                  <button
+                    className="text-muted-foreground/80 cursor-pointer hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-md transition-[color,box-shadow] outline-none focus:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
+                    type="button"
+                    onClick={toggleVisibility}
+                    aria-label={isVisible ? 'Hide password' : 'Show password'}
+                    aria-pressed={isVisible}
+                    aria-controls="password"
+                  >
+                    {isVisible ? <EyeOffIcon size={16} aria-hidden="true" /> : <EyeIcon size={16} aria-hidden="true" />}
+                  </button>
+                </div>
               );
             }}
           />
