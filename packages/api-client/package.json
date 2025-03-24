@@ -16,8 +16,8 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@honora/api": "workspace:^",
-    "@honora/eslint-config": "workspace:^",
+    "@honora/api": "workspace:*",
+    "@honora/eslint-config": "workspace:*",
     "hono": "^4.7.5"
   },
   "devDependencies": {

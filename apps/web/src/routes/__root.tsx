@@ -1,7 +1,9 @@
 import { createRootRouteWithContext, Outlet, useRouter } from '@tanstack/react-router';
-import { RouterContext } from '../context';
-import { useSession } from '../lib/auth-client';
 import { useEffect } from 'react';
+
+import type { RouterContext } from '../context';
+
+import { useSession } from '../lib/auth-client';
 
 export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
@@ -16,7 +18,8 @@ function RootComponent() {
       if (!location.pathname.includes('auth/')) {
         navigate({ to: '/auth/sign-in' });
       }
-    } else {
+    }
+    else {
       navigate({ to: '/' });
     }
   }, [data, navigate]);

@@ -1,5 +1,5 @@
-import pluginQuery from '@tanstack/eslint-plugin-query';
 import createConfig from '@honora/eslint-config/create-config';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 export default createConfig(
   {
@@ -20,5 +20,5 @@ export default createConfig(
         },
       ],
     },
-  }
+  },
 );

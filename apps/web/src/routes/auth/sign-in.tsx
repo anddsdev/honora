@@ -1,9 +1,9 @@
-import { createFileRoute, useNavigate, useRouter } from '@tanstack/react-router';
 import { signInSchema } from '@honora/api/schemas';
 import { useForm } from '@tanstack/react-form';
+import { createFileRoute, useNavigate, useRouter } from '@tanstack/react-router';
 
-import { signIn } from '../../lib/auth-client';
 import { FieldInfo } from '../../components/field-info';
+import { signIn } from '../../lib/auth-client';
 
 export const Route = createFileRoute('/auth/sign-in')({
   component: RouteComponent,
@@ -36,7 +36,6 @@ function RouteComponent() {
 
       router.invalidate();
       await navigate({ to: '/' });
-      return;
     },
   });
 
@@ -60,7 +59,7 @@ function RouteComponent() {
                   name={field.name}
                   value={field.state.value}
                   onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
+                  onChange={e => field.handleChange(e.target.value)}
                   placeholder="john@doe.com"
                 />
                 <FieldInfo field={field} />
@@ -82,7 +81,7 @@ function RouteComponent() {
                   value={field.state.value}
                   type="password"
                   onBlur={field.handleBlur}
-                  onChange={(e) => field.handleChange(e.target.value)}
+                  onChange={e => field.handleChange(e.target.value)}
                   placeholder="********"
                 />
                 <FieldInfo field={field} />
@@ -92,7 +91,7 @@ function RouteComponent() {
         />
       </div>
       <form.Subscribe
-        selector={(state) => [state.canSubmit, state.isSubmitting]}
+        selector={state => [state.canSubmit, state.isSubmitting]}
         children={([canSubmit, isSubmitting]) => (
           <button type="submit" disabled={!canSubmit} className="w-full cursor-pointer">
             {isSubmitting ? '...' : 'Sign In'}

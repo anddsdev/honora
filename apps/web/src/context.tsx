@@ -1,5 +1,5 @@
 import type { QueryClient } from '@tanstack/react-query';
 
-export interface RouterContext {
+export type RouterContext = {
   queryClient: QueryClient;
-}
+};
