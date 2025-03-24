@@ -5,7 +5,8 @@
   "description": "Honora is a starter template for building full-stack applications with Hono.",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"bun run --cwd apps/api dev\" \"bun run --cwd packages/api-client dev\" \"bun run --cwd apps/web dev\""
+    "dev": "concurrently \"bun run --cwd apps/api dev\" \"bun run --cwd packages/api-client dev\" \"bun run --cwd apps/web dev\"",
+    "lint": "concurrently \"bun run --cwd apps/api lint\" \"bun run --cwd packages/api-client lint\" \"bun run --cwd apps/web lint\""
   },
   "workspaces": [
     "apps/*",
