@@ -18,14 +18,13 @@ function RootComponent() {
       if (!location.pathname.includes('auth/')) {
         navigate({ to: '/auth/sign-in' });
       }
-    }
-    else {
+    } else {
       navigate({ to: '/' });
     }
   }, [data, navigate]);
 
   return (
-    <main>
+    <main className="min-h-screen bg-gradient-to-b from-background/80 to-background">
       <Outlet />
     </main>
   );
