@@ -1,10 +1,22 @@
 {
   "name": "honora",
   "version": "0.0.0",
-  "license": "MIT",
+  "private": true,
   "description": "Honora is a starter template for building full-stack applications with Hono.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"bun run --cwd apps/api dev\" \"bun run --cwd packages/api-client dev\" \"bun run --cwd apps/web dev\""
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^22.13.13",
+    "concurrently": "^9.1.2"
+  }
 }

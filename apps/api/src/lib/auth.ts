@@ -1,10 +1,10 @@
 import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
+import Bun from 'bun';
 
 import { prisma } from './prisma';
 
-// eslint-disable-next-line node/no-process-env
-const { BETTER_AUTH_URL, BETTER_AUTH_SECRET, ALLOWED_ORIGINS } = process.env;
+const { BETTER_AUTH_URL, BETTER_AUTH_SECRET, ALLOWED_ORIGINS } = Bun.env;
 
 export const auth = betterAuth({
   baseURL: BETTER_AUTH_URL || 'http://localhost:3000',

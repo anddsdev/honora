@@ -1,3 +1,5 @@
 import apiClient from '@honora/api-client';
 
-export default apiClient('/');
+const { api } = apiClient('/');
+
+export default api;

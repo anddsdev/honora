@@ -2,8 +2,10 @@
   "name": "@honora/api-client",
   "type": "module",
   "private": true,
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "dist/index.js",
   "scripts": {
     "dev": "tsc --watch",
     "build": "rm -rf dist && tsc",
@@ -21,7 +23,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250214.0",
     "@types/bun": "latest",
-    "@types/node": "^22.13.11",
+    "@types/node": "^22.13.13",
     "eslint": "^9.22.0",
     "eslint-plugin-format": "^1.0.1"
   }

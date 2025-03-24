@@ -1,5 +1,6 @@
 {
   "name": "@honora/api",
+  "private": true,
   "exports": {
     "./routes": "./src/routes/index.ts",
     "./types": "./src/types/index.ts",
@@ -24,7 +25,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@honora/eslint-config": "workspace:^",
+    "@honora/eslint-config": "workspace:*",
     "@types/bun": "^1.2.5",
     "@types/node": "^22.13.11",
     "eslint": "^9.22.0",
