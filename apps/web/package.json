@@ -13,11 +13,13 @@
     "@honora/api": "workspace:^",
     "@honora/api-client": "workspace:^",
     "@honora/eslint-config": "workspace:^",
+    "@tanstack/react-form": "^1.1.2",
     "@tanstack/react-query": "^5.69.0",
     "@tanstack/react-router": "^1.114.27",
     "better-auth": "^1.2.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
