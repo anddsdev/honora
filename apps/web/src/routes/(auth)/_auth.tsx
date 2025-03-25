@@ -1,4 +1,3 @@
-/* eslint-disable style/multiline-ternary */
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router';
 import { z } from 'zod';
 
