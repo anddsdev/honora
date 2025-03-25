@@ -10,6 +10,8 @@ export default defineConfig({
     TanStackRouterVite({
       routeTreeFileHeader: ['/* eslint-disable eslint-comments/no-unlimited-disable */', '/* eslint-disable */'],
       generatedRouteTree: './src/route-tree.gen.ts',
+      target: 'react',
+      autoCodeSplitting: true,
     }),
     react(),
     tailwindcss(),

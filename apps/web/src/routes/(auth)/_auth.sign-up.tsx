@@ -5,7 +5,7 @@ import { createFileRoute, Link, useNavigate, useRouter } from '@tanstack/react-r
 import { FieldInfo } from '../../components/field-info';
 import { signUp } from '../../lib/auth-client';
 
-export const Route = createFileRoute('/auth/sign-up')({
+export const Route = createFileRoute('/(auth)/_auth/sign-up')({
   component: RouteComponent,
 });
 
@@ -131,7 +131,7 @@ function RouteComponent() {
       <div className="mt-6 text-xs text-muted-foreground w-full ">
         <p className="flex gap-1 justify-center">
           Already have an account?
-          <Link to="/auth/sign-in" className="text-primary hover:text-orange-600">
+          <Link to="/sign-in" className="text-primary hover:text-orange-600">
             Sign In
           </Link>
         </p>

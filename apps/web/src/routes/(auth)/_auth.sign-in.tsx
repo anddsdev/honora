@@ -11,7 +11,7 @@ import { Label } from '@/web/components/ui/label';
 import { FieldInfo } from '../../components/field-info';
 import { signIn } from '../../lib/auth-client';
 
-export const Route = createFileRoute('/auth/sign-in')({
+export const Route = createFileRoute('/(auth)/_auth/sign-in')({
   component: RouteComponent,
 });
 
@@ -139,7 +139,7 @@ function RouteComponent() {
       <div className="mt-6 text-xs text-muted-foreground w-full ">
         <p className="flex gap-1 justify-center">
           Don't have an account?
-          <Link to="/auth/sign-up" className="text-primary hover:text-orange-600">
+          <Link to="/sign-up" className="text-primary hover:text-orange-600">
             Sign up
           </Link>
         </p>

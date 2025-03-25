@@ -1,5 +1,5 @@
 /* eslint-disable style/multiline-ternary */
-import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
+import { createFileRoute, Link, Outlet, redirect } from '@tanstack/react-router';
 
 import Github from '@/web/components/icons/github';
 import Google from '@/web/components/icons/google';
@@ -7,7 +7,15 @@ import { Button } from '@/web/components/ui/button';
 
 import { AuthFormHeading } from '../../components/auth-form-heading';
 
-export const Route = createFileRoute('/auth')({
+export const Route = createFileRoute('/(auth)/_auth')({
+  beforeLoad: ({ context, location }) => {
+    if (context.auth) {
+      throw redirect({
+        to: '/',
+        search: location.search,
+      });
+    }
+  },
   component: RouteComponent,
 });
 
