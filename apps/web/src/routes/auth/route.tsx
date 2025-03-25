@@ -1,14 +1,16 @@
+/* eslint-disable style/multiline-ternary */
 import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
 
 import Github from '@/web/components/icons/github';
 import Google from '@/web/components/icons/google';
 import { Button } from '@/web/components/ui/button';
 
+import { AuthFormHeading } from '../../components/auth-form-heading';
+
 export const Route = createFileRoute('/auth')({
   component: RouteComponent,
 });
-
-const isLogin = location.pathname.includes('sign-in');
 
 const socialIcons = [
   {
@@ -37,34 +39,7 @@ function RouteComponent() {
           <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-orange-500/20 blur-3xl" />
           <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-orange-500/20 blur-3xl" />
           <div className="relative z-10">
-            <div className="mb-6 flex justify-center">
-              <div className="flex items-center space-x-2 text-2xl font-bold">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500 text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-5 w-5"
-                  >
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5" />
-                    <path d="M2 12l10 5 10-5" />
-                  </svg>
-                </div>
-                <span>Honora</span>
-              </div>
-            </div>
-
-            <div className="mb-6 text-center">
-              <h1 className="text-2xl font-bold">{isLogin ? 'Welcome back' : 'Create your account'}</h1>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {isLogin ? 'Sign in to continue to your account' : 'Fill in your details to get started'}
-              </p>
-            </div>
+            <AuthFormHeading />
 
             <Outlet />
 
