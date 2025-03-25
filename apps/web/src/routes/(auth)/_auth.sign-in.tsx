@@ -66,7 +66,7 @@ function RouteComponent() {
             name="email"
             children={(field) => {
               return (
-                <div className="relative">
+                <div className="flex flex-col gap-3.5">
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id={field.name}
@@ -95,7 +95,7 @@ function RouteComponent() {
             name="password"
             children={(field) => {
               return (
-                <div className="relative">
+                <div className="relative flex flex-col gap-3.5">
                   <Input
                     id={field.name}
                     name={field.name}
