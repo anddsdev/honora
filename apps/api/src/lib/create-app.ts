@@ -18,13 +18,12 @@ export default function createApp() {
     .use('*', serveStatic({ root: './public' }))
     .use(async (c, next) => {
       if (c.req.path.startsWith(BASE_PATH)) {
-        return next();
+        return await next();
       }
 
-      const { origin } = new URL(c.req.raw.url);
-
-      return c.env.ASSETS?.fetch(new URL('/index.html', origin));
+      return serveStatic({ path: './public' })(c, next);
     })
+
     .basePath(BASE_PATH) as AppApi;
 
   app
