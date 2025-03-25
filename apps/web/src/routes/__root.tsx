@@ -1,3 +1,4 @@
+/* eslint-disable style/brace-style */
 import { createRootRouteWithContext, Outlet, useRouter } from '@tanstack/react-router';
 import { useEffect } from 'react';
 

@@ -1,6 +1,5 @@
 /* eslint-disable style/multiline-ternary */
 import { createFileRoute, Link, Outlet } from '@tanstack/react-router';
-import { useEffect, useState } from 'react';
 
 import Github from '@/web/components/icons/github';
 import Google from '@/web/components/icons/google';
