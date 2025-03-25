@@ -5,8 +5,15 @@
   "description": "Honora is a starter template for building full-stack applications with Hono.",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"bun run --cwd apps/api dev\" \"bun run --cwd packages/api-client dev\" \"bun run --cwd apps/web dev\"",
-    "lint": "concurrently \"bun run --cwd apps/api lint\" \"bun run --cwd packages/api-client lint\" \"bun run --cwd apps/web lint\""
+    "dev": "bun run  --filter '@honora/*' dev",
+    "lint": "bun run  --filter '@honora/*' lint",
+    "dev:client": "bun run  --filter '@honora/web' dev",
+    "dev:api": "bun run  --filter '@honora/api' dev",
+    "build": "bun run  --filter '@honora/*' build",
+    "db:generate": "bun run  --filter '@honora/api' db:generate",
+    "db:migrate": "bun run  --filter '@honora/api' db:migrate",
+    "db:push": "bun run  --filter '@honora/api' db:push",
+    "db:studio": "bun run  --filter '@honora/api' db:studio"
   },
   "workspaces": [
     "apps/*",
@@ -16,8 +23,6 @@
     "typescript": "^5"
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "@types/node": "^22.13.13",
-    "concurrently": "^9.1.2"
+    "@types/bun": "latest"
   }
 }

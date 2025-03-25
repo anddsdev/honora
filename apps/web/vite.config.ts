@@ -16,6 +16,7 @@ export default defineConfig({
   ],
   build: {
     outDir: '../api/public',
+    emptyOutDir: false,
   },
   resolve: {
     alias: {

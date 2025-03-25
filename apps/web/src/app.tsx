@@ -21,9 +21,10 @@ const router = createRouter({
 });
 
 declare module '@tanstack/react-query' {
-  type Register = {
+  // eslint-disable-next-line ts/consistent-type-definitions
+  interface Register {
     router: typeof router;
-  };
+  }
 }
 
 function App() {
