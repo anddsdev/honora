@@ -2,6 +2,8 @@ import { signUpSchema } from '@honora/api/schemas';
 import { useForm } from '@tanstack/react-form';
 import { createFileRoute, Link, useNavigate, useRouter } from '@tanstack/react-router';
 
+import { AuthLayout } from '@/web/components/auth-layout';
+
 import { FieldInfo } from '../../components/field-info';
 import { signUp } from '../../lib/auth-client';
 
@@ -48,7 +50,7 @@ function RouteComponent() {
   };
 
   return (
-    <>
+    <AuthLayout>
       <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold">Create your account</h1>
         <p className="mt-1 text-sm text-muted-foreground">Fill in your details to get started</p>
@@ -136,6 +138,6 @@ function RouteComponent() {
           </Link>
         </p>
       </div>
-    </>
+    </AuthLayout>
   );
 }

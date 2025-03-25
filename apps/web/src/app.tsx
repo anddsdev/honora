@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 
+import { Loader } from './components/loader';
 import { NotFound } from './components/not-found';
 import { useSession } from './lib/auth-client';
 import { routeTree } from './route-tree.gen';
@@ -13,12 +14,7 @@ const router = createRouter({
   defaultPreloadStaleTime: 0,
   context: { queryClient, auth: undefined },
   defaultNotFoundComponent: NotFound,
-  defaultPendingComponent: () => (
-    // TODO: move to a spinner component
-    <div>
-      <p>Loading...</p>
-    </div>
-  ),
+  defaultPendingComponent: Loader,
 });
 
 declare module '@tanstack/react-query' {
@@ -29,17 +25,23 @@ declare module '@tanstack/react-query' {
 }
 
 function App() {
-  const { data } = useSession();
+  const { data, isPending } = useSession();
+  // eslint-disable-next-line antfu/if-newline
+  if (isPending) return <Loader />;
 
-  const isAuthenticated = !!data?.user;
+  const isAuthenticated = {
+    isAuthenticated: data !== null,
+    user: data ? data.user : null,
+    session: data ? data.session : null,
+  };
 
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider
         router={router}
         context={{
-          auth: isAuthenticated,
           queryClient,
+          auth: isAuthenticated || undefined,
         }}
       />
     </QueryClientProvider>

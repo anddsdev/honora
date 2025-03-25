@@ -4,6 +4,7 @@ import { createFileRoute, Link, useNavigate, useRouter } from '@tanstack/react-r
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useState } from 'react';
 
+import { AuthLayout } from '@/web/components/auth-layout';
 import { Button } from '@/web/components/ui/button';
 import { Input } from '@/web/components/ui/input';
 import { Label } from '@/web/components/ui/label';
@@ -54,7 +55,7 @@ function RouteComponent() {
   const toggleVisibility = () => setIsVisible((prevState: boolean) => !prevState);
 
   return (
-    <>
+    <AuthLayout>
       <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold">Welcome back</h1>
         <p className="mt-1 text-sm text-muted-foreground">Sign in to continue to your account</p>
@@ -144,6 +145,6 @@ function RouteComponent() {
           </Link>
         </p>
       </div>
-    </>
+    </AuthLayout>
   );
 }
