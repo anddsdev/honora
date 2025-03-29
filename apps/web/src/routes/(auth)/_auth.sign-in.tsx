@@ -6,8 +6,7 @@ import { ArrowRight, EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
-import Github from '@/web/components/icons/github';
-import Google from '@/web/components/icons/google';
+import { SocialIcons } from '@/web/components/social-icons';
 import { Button } from '@/web/components/ui/button';
 import { Input } from '@/web/components/ui/input';
 import { Label } from '@/web/components/ui/label';
@@ -19,25 +18,6 @@ import { signIn } from '../../lib/auth-client';
 export const Route = createFileRoute('/(auth)/_auth/sign-in')({
   component: RouteComponent,
 });
-
-const socialIcons = [
-  {
-    name: 'Google',
-    icon: Google,
-    action: () => {
-      // eslint-disable-next-line no-console
-      console.log('Google');
-    },
-  },
-  {
-    name: 'GitHub',
-    icon: Github,
-    action: () => {
-      // eslint-disable-next-line no-console
-      console.log('Github');
-    },
-  },
-];
 
 function RouteComponent() {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -186,24 +166,11 @@ function RouteComponent() {
         </div>
       </div>
 
-      <div className="space-y-4">
-        {socialIcons.map(({ name, icon: Icon, action }) => (
-          <Button
-            key={name}
-            type="button"
-            onClick={action}
-            variant="outline"
-            className="w-full flex gap-2 bg-background border-border cursor-pointer"
-          >
-            <Icon className="mr-2 h-4 w-4" />
-            {name}
-          </Button>
-        ))}
-      </div>
+      <SocialIcons />
 
       <div className="mt-6 text-xs text-muted-foreground w-full ">
         <p className="flex gap-1 justify-center">
-          Already have an account?
+          Don't have an account?
           <Link to="/sign-up" className="text-primary hover:underline">
             Sign up
           </Link>
