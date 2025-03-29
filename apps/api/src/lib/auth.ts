@@ -16,7 +16,11 @@ export const auth = betterAuth({
     autoSignIn: false,
     minPasswordLength: 6,
     resetPasswordTokenExpiresIn: 10 * 60, // 10 minutes
-    sendResetPassword: async ({ url, user }) => {
+    sendResetPassword: async ({ user, token }, request) => {
+      const url = new URL(request?.headers.get('origin') || '');
+      url.pathname = '/reset-password';
+      url.searchParams.append('token', token);
+
       await resend.emails.send({
         from: 'onboarding@resend.dev',
         to: [user.email],
@@ -54,6 +58,9 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: 'postgresql',
   }),
+  verification: {
+    disableCleanup: true,
+  },
   user: {
     additionalFields: {
       role: {

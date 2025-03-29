@@ -20,5 +20,20 @@ export const forgotPasswordSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address' }),
 });
 
+export const resetPasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(8, 'Password must be at least 8 characters long')
+      .refine((val: string) => /[A-Z]/.test(val), 'Password must contain at least one uppercase letter')
+      .refine((val: string) => /[0-9]/.test(val), 'Password must contain at least one number'),
+    confirmPassword: z.string(),
+  })
+  .refine((data: { password: string; confirmPassword: string }) => data.password === data.confirmPassword, {
+    // eslint-disable-next-line style/quotes
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  });
+
 export type SignIn = z.infer<typeof signInSchema>;
 export type SignUp = z.infer<typeof signUpSchema>;

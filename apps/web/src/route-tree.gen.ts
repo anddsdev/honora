@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as authAuthImport } from './routes/(auth)/_auth'
 import { Route as authAuthSignUpImport } from './routes/(auth)/_auth.sign-up'
 import { Route as authAuthSignInImport } from './routes/(auth)/_auth.sign-in'
+import { Route as authAuthResetPasswordImport } from './routes/(auth)/_auth.reset-password'
 import { Route as authAuthForgotPasswordImport } from './routes/(auth)/_auth.forgot-password'
 
 // Create Virtual Routes
@@ -48,6 +49,12 @@ const authAuthSignUpRoute = authAuthSignUpImport.update({
 const authAuthSignInRoute = authAuthSignInImport.update({
   id: '/sign-in',
   path: '/sign-in',
+  getParentRoute: () => authAuthRoute,
+} as any)
+
+const authAuthResetPasswordRoute = authAuthResetPasswordImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => authAuthRoute,
 } as any)
 
@@ -89,6 +96,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authAuthForgotPasswordImport
       parentRoute: typeof authAuthImport
     }
+    '/(auth)/_auth/reset-password': {
+      id: '/(auth)/_auth/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof authAuthResetPasswordImport
+      parentRoute: typeof authAuthImport
+    }
     '/(auth)/_auth/sign-in': {
       id: '/(auth)/_auth/sign-in'
       path: '/sign-in'
@@ -110,12 +124,14 @@ declare module '@tanstack/react-router' {
 
 interface authAuthRouteChildren {
   authAuthForgotPasswordRoute: typeof authAuthForgotPasswordRoute
+  authAuthResetPasswordRoute: typeof authAuthResetPasswordRoute
   authAuthSignInRoute: typeof authAuthSignInRoute
   authAuthSignUpRoute: typeof authAuthSignUpRoute
 }
 
 const authAuthRouteChildren: authAuthRouteChildren = {
   authAuthForgotPasswordRoute: authAuthForgotPasswordRoute,
+  authAuthResetPasswordRoute: authAuthResetPasswordRoute,
   authAuthSignInRoute: authAuthSignInRoute,
   authAuthSignUpRoute: authAuthSignUpRoute,
 }
@@ -137,6 +153,7 @@ const authRouteWithChildren = authRoute._addFileChildren(authRouteChildren)
 export interface FileRoutesByFullPath {
   '/': typeof authAuthRouteWithChildren
   '/forgot-password': typeof authAuthForgotPasswordRoute
+  '/reset-password': typeof authAuthResetPasswordRoute
   '/sign-in': typeof authAuthSignInRoute
   '/sign-up': typeof authAuthSignUpRoute
 }
@@ -144,6 +161,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof authAuthRouteWithChildren
   '/forgot-password': typeof authAuthForgotPasswordRoute
+  '/reset-password': typeof authAuthResetPasswordRoute
   '/sign-in': typeof authAuthSignInRoute
   '/sign-up': typeof authAuthSignUpRoute
 }
@@ -154,21 +172,28 @@ export interface FileRoutesById {
   '/(auth)': typeof authRouteWithChildren
   '/(auth)/_auth': typeof authAuthRouteWithChildren
   '/(auth)/_auth/forgot-password': typeof authAuthForgotPasswordRoute
+  '/(auth)/_auth/reset-password': typeof authAuthResetPasswordRoute
   '/(auth)/_auth/sign-in': typeof authAuthSignInRoute
   '/(auth)/_auth/sign-up': typeof authAuthSignUpRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/forgot-password' | '/sign-in' | '/sign-up'
+  fullPaths:
+    | '/'
+    | '/forgot-password'
+    | '/reset-password'
+    | '/sign-in'
+    | '/sign-up'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/forgot-password' | '/sign-in' | '/sign-up'
+  to: '/' | '/forgot-password' | '/reset-password' | '/sign-in' | '/sign-up'
   id:
     | '__root__'
     | '/'
     | '/(auth)'
     | '/(auth)/_auth'
     | '/(auth)/_auth/forgot-password'
+    | '/(auth)/_auth/reset-password'
     | '/(auth)/_auth/sign-in'
     | '/(auth)/_auth/sign-up'
   fileRoutesById: FileRoutesById
@@ -212,12 +237,17 @@ export const routeTree = rootRoute
       "parent": "/(auth)",
       "children": [
         "/(auth)/_auth/forgot-password",
+        "/(auth)/_auth/reset-password",
         "/(auth)/_auth/sign-in",
         "/(auth)/_auth/sign-up"
       ]
     },
     "/(auth)/_auth/forgot-password": {
       "filePath": "(auth)/_auth.forgot-password.tsx",
+      "parent": "/(auth)/_auth"
+    },
+    "/(auth)/_auth/reset-password": {
+      "filePath": "(auth)/_auth.reset-password.tsx",
       "parent": "/(auth)/_auth"
     },
     "/(auth)/_auth/sign-in": {
