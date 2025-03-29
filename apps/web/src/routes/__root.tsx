@@ -2,6 +2,8 @@ import { createRootRouteWithContext, HeadContent, Outlet } from '@tanstack/react
 
 import type { RouterContext } from '../context';
 
+import { Toaster } from '../components/ui/sonner';
+
 export const Route = createRootRouteWithContext<RouterContext>()({
   component: RootComponent,
   head: () => ({
@@ -29,6 +31,7 @@ function RootComponent() {
       <HeadContent />
       <main className="min-h-screen bg-gradient-to-b from-background/80 to-background">
         <Outlet />
+        <Toaster />
       </main>
     </>
   );
