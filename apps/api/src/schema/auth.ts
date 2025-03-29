@@ -16,5 +16,9 @@ export const signUpSchema = z.object({
     .regex(/^[a-zA-Z\s]*$/, { message: 'Name must contain only letters' }),
 });
 
+export const forgotPasswordSchema = z.object({
+  email: z.string().email({ message: 'Please enter a valid email address' }),
+});
+
 export type SignIn = z.infer<typeof signInSchema>;
 export type SignUp = z.infer<typeof signUpSchema>;

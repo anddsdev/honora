@@ -1,6 +1,6 @@
 import { createAuthClient } from 'better-auth/react';
 
-export const { signIn, signOut, useSession, signUp, $Infer } = createAuthClient({
+export const { signIn, signOut, useSession, signUp, $Infer, forgetPassword } = createAuthClient({
   baseURL: import.meta.env.BETTER_AUTH_URL,
   secret: 'secret',
   fetchOptions: {
