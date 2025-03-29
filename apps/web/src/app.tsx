@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 
 import { Loader } from './components/loader';
@@ -6,7 +6,14 @@ import { NotFound } from './components/not-found';
 import { useSession } from './lib/auth-client';
 import { routeTree } from './route-tree.gen';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error) => {
+      // TODO: handle errors
+      console.error(error);
+    },
+  }),
+});
 
 const router = createRouter({
   routeTree,
