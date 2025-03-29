@@ -42,8 +42,8 @@ function RouteComponent() {
         },
         {
           onSuccess: () => {
-            navigate({ to: '/sign-in' });
             toast.success('Sign up successful');
+            navigate({ to: '/sign-in' });
           },
           onError: ({ error }) => {
             toast.error(error.message, {

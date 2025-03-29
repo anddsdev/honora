@@ -38,6 +38,8 @@ BETTER_AUTH_SECRET= # The secret key for the API
 
 # For the Web
 BETTER_AUTH_URL=http://localhost:3000 # The URL of the API
+
+RESEND_API_KEY= # The API key for the Resend service
 ```
 
 3. Run the following commands to set up the database:

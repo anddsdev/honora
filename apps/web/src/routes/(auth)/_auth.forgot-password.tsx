@@ -1,5 +1,4 @@
 /* eslint-disable style/multiline-ternary */
-/* eslint-disable style/jsx-one-expression-per-line */
 import { forgotPasswordSchema } from '@honora/api/schemas';
 import { useForm } from '@tanstack/react-form';
 import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
