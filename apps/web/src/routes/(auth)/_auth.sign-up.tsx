@@ -2,13 +2,14 @@
 import { signUpSchema } from '@honora/api/schemas';
 import { useForm } from '@tanstack/react-form';
 import { createFileRoute, Link, useNavigate, useRouter } from '@tanstack/react-router';
-import { EyeIcon, EyeOffIcon } from 'lucide-react';
+import { ArrowRight, EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useState } from 'react';
 
-import { AuthLayout } from '@/web/components/auth-layout';
+import { SocialIcons } from '@/web/components/social-icons';
 import { Button } from '@/web/components/ui/button';
 import { Input } from '@/web/components/ui/input';
 import { Label } from '@/web/components/ui/label';
+import { Separator } from '@/web/components/ui/separator';
 
 import { FieldInfo } from '../../components/field-info';
 import { signUp } from '../../lib/auth-client';
@@ -59,11 +60,12 @@ function RouteComponent() {
   const toggleVisibility = () => setIsVisible((prevState: boolean) => !prevState);
 
   return (
-    <AuthLayout>
+    <div className="w-full max-w-md px-8 py12">
       <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold">Create your account</h1>
         <p className="mt-1 text-sm text-muted-foreground">Fill in your details to get started</p>
       </div>
+
       <form onSubmit={onSubmit} className="space-y-4">
         <div className="space-y-2">
           <form.Field
@@ -71,15 +73,15 @@ function RouteComponent() {
             children={(field) => {
               return (
                 <div className="flex flex-col gap-3.5">
-                  <Label htmlFor="name">Full Name</Label>
+                  <Label htmlFor="name">Name</Label>
                   <Input
                     id={field.name}
                     name={field.name}
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.handleChange(e.target.value)}
-                    placeholder="jhon doe"
-                    className="border-input/50 bg-background/50 backdrop-blur-sm"
+                    placeholder="Enter your name"
+                    className="bg-background border-border"
                     autoComplete="off"
                   />
                   <FieldInfo field={field} />
@@ -101,8 +103,8 @@ function RouteComponent() {
                     value={field.state.value}
                     onBlur={field.handleBlur}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.handleChange(e.target.value)}
-                    placeholder="john@doe.com"
-                    className="border-input/50 bg-background/50 backdrop-blur-sm"
+                    placeholder="Enter your email"
+                    className="bg-background border-border"
                     autoComplete="off"
                   />
                   <FieldInfo field={field} />
@@ -112,15 +114,13 @@ function RouteComponent() {
           />
         </div>
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Label htmlFor="password">Password</Label>
-          </div>
           <form.Field
             name="password"
             children={(field) => {
               return (
-                <>
-                  <div className="relative">
+                <div className="flex flex-col gap-3.5">
+                  <Label htmlFor="password">Password</Label>
+                  <div className="relative flex flex-col gap-3.5">
                     <Input
                       id={field.name}
                       name={field.name}
@@ -129,7 +129,7 @@ function RouteComponent() {
                       onBlur={field.handleBlur}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => field.handleChange(e.target.value)}
                       placeholder="********"
-                      className="border-input/50 bg-background/50 backdrop-blur-sm"
+                      className="bg-background border-border"
                     />
 
                     <button
@@ -148,7 +148,7 @@ function RouteComponent() {
                     </button>
                   </div>
                   <FieldInfo field={field} />
-                </>
+                </div>
               );
             }}
           />
@@ -160,22 +160,40 @@ function RouteComponent() {
             <Button
               type="submit"
               disabled={!canSubmit}
-              className="w-full bg-orange-500 hover:bg-orange-600 cursor-pointer"
+              className="w-full bg-primary hover:bg-primary/90 cursor-pointer"
             >
-              {isSubmitting ? '...' : 'Sign Up'}
+              {isSubmitting ? (
+                '...'
+              ) : (
+                <>
+                  Sign Up
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </>
+              )}
             </Button>
           )}
         />
       </form>
 
+      <div className="relative my-6">
+        <div className="absolute inset-0 flex items-center">
+          <Separator className="w-full" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
+        </div>
+      </div>
+
+      <SocialIcons />
+
       <div className="mt-6 text-xs text-muted-foreground w-full ">
         <p className="flex gap-1 justify-center">
           Already have an account?
-          <Link to="/sign-in" className="text-primary hover:text-orange-600">
-            Sign In
+          <Link to="/sign-in" className="text-primary hover:underline">
+            Sign in
           </Link>
         </p>
       </div>
-    </AuthLayout>
+    </div>
   );
 }
