@@ -1,4 +1,3 @@
-/* eslint-disable style/brace-style */
 import { createRootRouteWithContext, HeadContent, Outlet } from '@tanstack/react-router';
 
 import type { RouterContext } from '../context';
