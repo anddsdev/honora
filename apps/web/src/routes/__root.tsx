@@ -29,9 +29,9 @@ function RootComponent() {
   return (
     <>
       <HeadContent />
-      <main className="min-h-screen bg-gradient-to-b from-background/80 to-background">
+      <main className="min-h-screen bg-background">
         <Outlet />
-        <Toaster />
+        <Toaster richColors />
       </main>
     </>
   );
