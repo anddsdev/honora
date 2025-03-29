@@ -1,9 +1,10 @@
 /* eslint-disable style/multiline-ternary */
 import { signUpSchema } from '@honora/api/schemas';
 import { useForm } from '@tanstack/react-form';
-import { createFileRoute, Link, useNavigate, useRouter } from '@tanstack/react-router';
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
 import { ArrowRight, EyeIcon, EyeOffIcon } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import { SocialIcons } from '@/web/components/social-icons';
 import { Button } from '@/web/components/ui/button';
@@ -20,7 +21,7 @@ export const Route = createFileRoute('/(auth)/_auth/sign-up')({
 
 function RouteComponent() {
   const navigate = useNavigate();
-  const router = useRouter();
+
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const form = useForm({
@@ -33,21 +34,31 @@ function RouteComponent() {
       onChange: signUpSchema,
     },
     async onSubmit({ value, formApi }) {
-      const response = await signUp.email({
-        name: value.name,
-        email: value.email,
-        password: value.password,
-      });
-
-      if (response.error && response.error.code === 'USER_ALREADY_EXISTS') {
-        // TODO: show a message to the user that the email or password is invalid
-
-        formApi.setFieldValue('email', '');
-        formApi.setFieldValue('password', '');
-        return;
-      }
-      router.invalidate();
-      await navigate({ to: '/sign-in' });
+      await signUp.email(
+        {
+          name: value.name,
+          email: value.email,
+          password: value.password,
+        },
+        {
+          onSuccess: () => {
+            navigate({ to: '/sign-in' });
+            toast.success('Sign up successful');
+          },
+          onError: ({ error }) => {
+            toast.error(error.message, {
+              duration: 5000,
+              action: {
+                label: 'Try again',
+                onClick: () => {
+                  formApi.setFieldValue('password', '');
+                  formApi.setFieldValue('email', '');
+                },
+              },
+            });
+          },
+        },
+      );
     },
   });
 
