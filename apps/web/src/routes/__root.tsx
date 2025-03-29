@@ -17,7 +17,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     links: [
       {
         rel: 'icon',
-        href: '/vite.svg',
+        href: '/vite.svg', // TODO: replace with your own favicon
       },
     ],
   }),
