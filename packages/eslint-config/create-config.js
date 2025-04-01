@@ -33,8 +33,9 @@ export default function createConfig(options, ...userConfigs) {
             ignore: ['README.md'],
           },
         ],
+        'style/brace-style': ['error', '1tbs'],
       },
     },
-    ...userConfigs
+    ...userConfigs,
   );
 }
